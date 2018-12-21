@@ -1,4 +1,7 @@
-fin_res <- read.csv("Final_initial_res.csv")
+#-----------------------------
+library(fslr) # need niftiarr
+library(oro.nifti)
+
 big_to_small_data <- read.csv("Big_to_small_ind.csv")
 big_to_small_data <- big_to_small_data[,-1]
 sum(1*I(big_to_small_data))
@@ -21,45 +24,6 @@ colnames(tot_res) <- c("Big to small ind","Coeff","StdErr","T-value","-log_10(p)
 summary(tot_res)
 
 
-#Creating a 157x189x156 array (correctly).
-
-p_wabh <- array(tot_res[,11],c(157,189,156))
-p_20 <- array(tot_res[,12],c(157,189,156))
-p_bh <- array(tot_res[,5],c(157,189,156))
-weig_arr <- array(tot_res[,6],c(157,189,156))
-dis_wabh <- array(tot_res[,8],c(157,189,156))
-Tested <- array(1-1*I(tot_res[,4]==0),c(157,189,156))
-
-library("R.matlab")
-writeMat("Analysis_output_30Oct2018.mat",p_wabh=p_wabh,p_bh=p_bh,weig_arr=weig_arr,dis_wabh=dis_wabh,Tested=Tested)
-
-
-#-----------------------------
-library(fslr) # need niftiarr
-library(oro.nifti)
-p_wabh_nifti = oro.nifti::nifti(p_wabh)
-p_20_nifti = oro.nifti::nifti(p_20)
-p_bh_nifti = oro.nifti::nifti(p_bh)
-dis_wabh_nifti = oro.nifti::nifti(dis_wabh)
-Incon_dis_wabh_nifti = oro.nifti::nifti(dis_wabh)
-weig_arr_nifti = oro.nifti::nifti(weig_arr)
-Tested_nifti = oro.nifti::nifti(Tested)
-
-
-mask = niftiarr(Tested_nifti,Tested_nifti==1)
-p_wabh_nifti[mask == 0] = 0
-p_bh_nifti[mask == 0] = 0
-p_20_nifti[mask == 0] = 0
-dis_wabh_nifti[mask == 0] = 0
-Incon_dis_wabh_nifti[-weig_arr_nifti>=(-0.1)] = 2
-Incon_dis_wabh_nifti[mask == 0] = 0
-weig_arr_nifti[mask == 0] = 0
-mask[mask == 0] = 0
-
-
-
-
-
 ####################### Exporting NIFTI files #####################
 
 
@@ -70,7 +34,7 @@ weig_arr <- array(tot_res[,6],c(157,189,156))
 dis_wabh <- array(tot_res[,8],c(157,189,156))
 Tested <- array(1-1*I(tot_res[,4]==0),c(157,189,156))
 
-rows_out <- 25
+rows_out <- 25 ## Removing lines to match with baseline reference figure.
 
 p_wabh[,,1:(dim(p_wabh)[3]-rows_out)] <- p_wabh[,,(rows_out+1):(dim(p_wabh)[3])]
 p_wabh[,,(dim(p_wabh)[3]-rows_out+1):(dim(p_wabh)[3])] <- 0
