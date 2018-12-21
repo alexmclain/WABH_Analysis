@@ -68,7 +68,7 @@ p_20 <- array(tot_res[,12],c(157,189,156))
 p_bh <- array(tot_res[,5],c(157,189,156))
 weig_arr <- array(tot_res[,6],c(157,189,156))
 dis_wabh <- array(tot_res[,8],c(157,189,156))
-#Tested <- array(1-1*I(tot_res[,4]==0),c(157,189,156))
+Tested <- array(1-1*I(tot_res[,4]==0),c(157,189,156))
 
 rows_out <- 25
 
@@ -82,8 +82,8 @@ dis_wabh[,,1:(dim(p_wabh)[3]-rows_out)] <- dis_wabh[,,(rows_out+1):(dim(p_wabh)[
 dis_wabh[,,(dim(p_wabh)[3]-rows_out+1):(dim(p_wabh)[3])] <- 0
 weig_arr[,,1:(dim(p_wabh)[3]-rows_out)] <- weig_arr[,,(rows_out+1):(dim(p_wabh)[3])]
 weig_arr[,,(dim(p_wabh)[3]-rows_out+1):(dim(p_wabh)[3])] <- 0
-#Tested[,,1:(dim(p_wabh)[3]-rows_out)] <- Tested[,,(rows_out+1):(dim(p_wabh)[3])]
-#Tested[,,(dim(p_wabh)[3]-rows_out+1):(dim(p_wabh)[3])] <- 0
+Tested[,,1:(dim(p_wabh)[3]-rows_out)] <- Tested[,,(rows_out+1):(dim(p_wabh)[3])]
+Tested[,,(dim(p_wabh)[3]-rows_out+1):(dim(p_wabh)[3])] <- 0
 
 
 
@@ -92,13 +92,13 @@ p_20_nifti = oro.nifti::nifti(p_20)
 p_bh_nifti = oro.nifti::nifti(p_bh)
 weig_arr_nifti = oro.nifti::nifti(weig_arr)
 dis_wabh_nifti = oro.nifti::nifti(dis_wabh)
-#Tested_nifti = oro.nifti::nifti(Tested)
+Tested_nifti = oro.nifti::nifti(Tested)
 Incon_dis_wabh_nifti = oro.nifti::nifti(dis_wabh*0)
 
 
 
 
-#mask = niftiarr(Tested_nifti,Tested_nifti==1)
+mask = niftiarr(Tested_nifti,Tested_nifti==1)
 p_wabh_nifti[mask == 0] = -1
 p_bh_nifti[mask == 0] = -1
 p_20_nifti[mask == 0] = -1
@@ -106,14 +106,14 @@ dis_wabh_nifti[mask == 0] = 0
 Incon_dis_wabh_nifti[-weig_arr_nifti>=(-0.1)] = 2
 Incon_dis_wabh_nifti[mask == 0] = 0
 weig_arr_nifti[mask == 0] = -1
-#mask[mask == 0] = 0
+mask[mask == 0] = 0
 
 p_wabh_nifti = p_wabh_nifti+1
 p_bh_nifti = p_bh_nifti+1
 weig_arr_nifti= weig_arr_nifti +1
 
 sWeights <- readNIfTI("Final_results/alex/sWeights.nii")
-#mask = copyNIfTIHeader(img = sWeights, arr = mask)
+mask = copyNIfTIHeader(img = sWeights, arr = mask)
 p_wabh_nifti = copyNIfTIHeader(img = sWeights, arr = p_wabh_nifti)
 p_bh_nifti = copyNIfTIHeader(img = sWeights, arr = p_bh_nifti)
 dis_wabh_nifti = copyNIfTIHeader(img = sWeights, arr = dis_wabh_nifti)
@@ -122,7 +122,7 @@ weig_arr_nifti = copyNIfTIHeader(img = sWeights, arr = weig_arr_nifti)
 
 show(weig_arr_nifti)
 
-#writeNIfTI2(mask,"Final_results/Mask.nii.gz")
+writeNIfTI2(mask,"Final_results/Mask.nii.gz")
 writeNIfTI2(p_wabh_nifti,"Final_results/P_values_weight.nii.gz")
 writeNIfTI2(p_bh_nifti,"Final_results/P_values_std.nii.gz")
 writeNIfTI2(dis_wabh_nifti,"Final_results/Discoveries.nii.gz")
