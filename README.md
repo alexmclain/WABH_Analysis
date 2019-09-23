@@ -6,4 +6,4 @@ Julius Fridriksson (jfridrik 'at' sc 'dot' edu) or Christopher Rorden (RORDEN "a
 
 For this analysis, we use the results of voxel-by-voxel logistic regression analysis of lesion status (yes/no) by Aphasia
 Quotient (AQ) (logit transformed), total lesion volume and months since stroke at the time of the examination.  This data 
-is available at XXX and once it is saved all results of the paper can be reproduced.
+is available at https://doi.org/10.7910/DVN/RQZZP1 and once it is saved all results of the paper can be reproduced.
