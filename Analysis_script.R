@@ -2,9 +2,10 @@ source("WABH programs.R")
 library(dplyr)
 library(qvalue)
 
-#Loading in voxel-level mean (proportion of lesions), R-sq, and logistic model information (estimated regression coefficients, standard error, z-values and p-values).
+#Loading in voxel-level mean (proportion of lesions), R-sq, and logistic model information (row, proportion of damaged voxels, R-squared between Y and X^+, estimated regression coefficients, standard error, z-values and p-values).
 
 reg_results <- read.csv("Log_mod_res_logitY_w_MSS.csv")
+head(reg_results)
 
 X_mean <- reg_results[,2] # Proportion of lesions
 R_sq <- reg_results[,3]  # R-squared
@@ -26,8 +27,10 @@ alpha <- 0.1 #Significance level
 #predicting standard error, using equation (1) in the paper, where 3.597663 is the variance of the Y data.
 pred_SE <- 1/sqrt(X_mean*(1-X_mean)*3.597663*(N-1)/(1-R_sq))
 
-#Getting the number 
-#length(X_mean[X_mean>0.1])
+#Getting the proportion of voxels with damage less than q
+length(X_mean[X_mean<0.05])/M
+length(X_mean[X_mean<0.1])/M
+length(X_mean[X_mean<0.2])/M
 
 #Getting the p_values and estimating the proportion of nulls.
 p_vals <- lm_info[,4]
