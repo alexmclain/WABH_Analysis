@@ -1,0 +1,74 @@
+Title: "False Discovery Rate Control for Lesion-Symptom Mapping with Heterogeneous data via Weighted P-values"
+
+Authors: Siyu Zheng, Alexander C. McLain, Joshua Habiger, Christopher Rorden, and Julius Fridriksson
+
+R version 4.1.3 (2022-03-10)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 19045)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=English_United States.1252  LC_CTYPE=English_United States.1252    LC_MONETARY=English_United States.1252
+[4] LC_NUMERIC=C                           LC_TIME=English_United States.1252    
+
+attached base packages:
+[1] splines   stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] caret_6.0-91            lattice_0.20-45         CAMT_1.1                matrixStats_0.61.0      cowplot_1.1.1          
+ [6] IHW_1.22.0              adaptMT_1.0.0           reticulate_1.25         dplyr_1.0.8             cp4p_0.3.6             
+[11] limma_3.50.3            qvalue_2.26.0           multtest_2.50.0         Biobase_2.54.0          BiocGenerics_0.40.0    
+[16] MESS_0.5.9              ggplot2_3.3.5           RandomFields_3.3.14     RandomFieldsUtils_1.2.5 sp_1.5-0               
+
+loaded via a namespace (and not attached):
+ [1] nlme_3.1-155         lubridate_1.8.0      tools_4.1.3          backports_1.4.1      utf8_1.2.2          
+ [6] R6_2.5.1             rpart_4.1.16         DBI_1.1.2            colorspace_2.0-3     nnet_7.3-17         
+[11] withr_2.5.0          tidyselect_1.1.2     compiler_4.1.3       fdrtool_1.2.17       cli_3.2.0           
+[16] slam_0.1-50          mosaicCore_0.9.0     scales_1.1.1         ggridges_0.5.3       stringr_1.4.0       
+[21] digest_0.6.29        ggformula_0.10.1     pkgconfig_2.0.3      parallelly_1.30.0    lpsymphony_1.22.0   
+[26] geeM_0.10.1          labelled_2.9.1       rlang_1.0.2          farver_2.1.0         generics_0.1.2      
+[31] jsonlite_1.8.0       ModelMetrics_1.2.2.2 magrittr_2.0.2       Matrix_1.4-0         Rcpp_1.0.8.3        
+[36] munsell_0.5.0        fansi_1.0.2          geepack_1.3.4        lifecycle_1.0.1      pROC_1.18.0         
+[41] stringi_1.7.6        MASS_7.3-55          plyr_1.8.7           recipes_0.2.0        ggstance_0.3.5      
+[46] grid_4.1.3           listenv_0.8.0        parallel_4.1.3       forcats_0.5.1        crayon_1.5.0        
+[51] haven_2.4.3          hms_1.1.1            pillar_1.7.0         future.apply_1.8.1   reshape2_1.4.4      
+[56] codetools_0.2-18     stats4_4.1.3         glue_1.6.2           data.table_1.14.2    png_0.1-7           
+[61] vctrs_0.3.8          tweenr_1.0.2         foreach_1.5.2        gtable_0.3.0         purrr_0.3.4         
+[66] polyclip_1.10-0      tidyr_1.2.0          future_1.24.0        assertthat_0.2.1     ggforce_0.3.3       
+[71] gower_1.0.0          prodlim_2019.11.13   broom_0.7.12         class_7.3-20         survival_3.2-13     
+[76] timeDate_3043.102    tibble_3.1.6         iterators_1.0.14     hardhat_0.2.0        lava_1.6.10         
+[81] globals_0.14.0       ellipsis_0.3.2       ipred_0.9-12 
+
+
+
+/folder Simulation study/
+
+/subfolder Data Example/
+SimDataExampleFigures.R
+An R script which was used to generate figure 8 and figure 9 in the Supplemental Material.
+
+/subfolder Original Results/
+
+The whole folder is for the simulation study original results. 01-Simulation.R was used to generate all simulation 
+study results under 54 parameters settings. The full simulation results and summarized results under each parameter
+setting are in the By_iteration subfolder and Summarized subfolder. 02-Figures.R was used to generate Figure 2 and 
+Figure 3 in the main document and Figure 4, Figure 5, Figure 6, and Figure 7 in the Supplemental Material.
+
+/subfolder Misspecified Setting Results/
+
+The whole folder is for the simulation study results in the Supplemental Material Secion C. 01-Simulation.R was used to 
+generate all related simulation study results under 54 parameters settings. The full simulation results and summarized results 
+under each parameter setting are in the By_iteration subfolder and Summarized subfolder. 02-Figures.R was used to generate 
+Figure 3 in the Supplemental Material.
+
+/subfolder Split Results/
+
+The whole folder is for the simulation study results in the Supplemental Material Secion B. 01-Simulation.R was used to 
+generate all related simulation study results under 54 parameters settings. The full simulation results and summarized results 
+under each parameter setting are in the By_iteration subfolder and Summarized subfolder. 02-Figures.R was used to generate 
+Figure 1 and Figure 2 in the Supplemental Material which used the summarized results in this subfolder and the summarized results 
+in the Original Results subfolder.
+
+args_list.csv contains all the parameters settings.
+
