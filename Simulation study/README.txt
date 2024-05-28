@@ -50,21 +50,21 @@ An R script which was used to generate figure 8 and figure 9 in the Supplemental
 
 /subfolder Original Results/
 
-The whole folder is for the simulation study original results. 01-Simulation.R was used to generate all simulation 
+This folder is for the simulation study results in the main text. 01-Simulation.R was used to generate all simulation 
 study results under 54 parameters settings. The full simulation results and summarized results under each parameter
 setting are in the By_iteration subfolder and Summarized subfolder. 02-Figures.R was used to generate Figure 2 and 
 Figure 3 in the main document and Figure 4, Figure 5, Figure 6, and Figure 7 in the Supplemental Material.
 
 /subfolder Misspecified Setting Results/
 
-The whole folder is for the simulation study results in the Supplemental Material Secion C. 01-Simulation.R was used to 
+This folder is for the simulation study results in the Supplemental Material Secion C. 01-Simulation.R was used to 
 generate all related simulation study results under 54 parameters settings. The full simulation results and summarized results 
 under each parameter setting are in the By_iteration subfolder and Summarized subfolder. 02-Figures.R was used to generate 
 Figure 3 in the Supplemental Material.
 
 /subfolder Split Results/
 
-The whole folder is for the simulation study results in the Supplemental Material Secion B. 01-Simulation.R was used to 
+This folder is for the simulation study results in the Supplemental Material Secion B. 01-Simulation.R was used to 
 generate all related simulation study results under 54 parameters settings. The full simulation results and summarized results 
 under each parameter setting are in the By_iteration subfolder and Summarized subfolder. 02-Figures.R was used to generate 
 Figure 1 and Figure 2 in the Supplemental Material which used the summarized results in this subfolder and the summarized results 
