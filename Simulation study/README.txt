@@ -46,14 +46,14 @@ loaded via a namespace (and not attached):
 
 /subfolder Data Example/
 SimDataExampleFigures.R
-An R script which was used to generate figure 8 and figure 9 in the Supplemental Material.
+An R script which was used to generate figure 2 in the main text, and figures 8 and 9 in the Supplemental Material.
 
 /subfolder Original Results/
 
 This folder is for the simulation study results in the main text. 01-Simulation.R was used to generate all simulation 
 study results under 54 parameters settings. The full simulation results and summarized results under each parameter
-setting are in the By_iteration subfolder and Summarized subfolder. 02-Figures.R was used to generate Figure 2 and 
-Figure 3 in the main document and Figure 4, Figure 5, Figure 6, and Figure 7 in the Supplemental Material.
+setting are in the By_iteration subfolder and Summarized subfolder. 02-Figures.R was used to generate Figure 3 and 
+Figure 4 in the main document and Figure 4, Figure 5, Figure 6, and Figure 7 in the Supplemental Material.
 
 /subfolder Misspecified Setting Results/
 
