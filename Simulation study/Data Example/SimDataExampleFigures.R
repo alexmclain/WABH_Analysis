@@ -45,7 +45,7 @@ signal_data <- 1*I(array(signal_data)>=quan)
 ## Generating the latent data (intercepts) alpha0m star in the paper
 data <- RFsimulate(model = RMstable(alpha = 2, scale = lat_sp), x=x, y=x, grid=TRUE,n=1)
 LP_data <- expand.grid(x1=x,x2=x)
-LP_data$Latent_Var <- C*(array(data)-mean(array(data)))/sd(array(data)) + beta0 #standard deviation is C value
+LP_data$Latent_Var <- C*(array(data)-mean(array(data)) + beta0)/sd(array(data)) #standard deviation is C value
 LP_data$signal <- signal_data 
 signal<- seq(1,M,1)[signal_data==1]
 
@@ -66,14 +66,14 @@ LP_data$lesionstatus <- BR_dat[100,]
 LP_data$signal1[LP_data$signal==0] <- 0
 LP_data$signal1[LP_data$signal==1] <- 1
 
-pdf(paste0("Simulation study",delim,"Figures",delim,"Data_examples",delim,"Non Null ",simulationno,"K500theta",eta,"C",C,"sig_sp",sig_sp,".pdf"),height = 6.75,width = 5)
+pdf(paste0("Simulation study",delim,"Figures",delim,"Data_examples",delim,"Non Null ",simulationno,"K500theta0.75C",C,"sig_sp",sig_sp,".pdf"),height = 6.75,width = 5)
 
 
 print(ggplot(data = LP_data, aes(x = x1, y = x2, fill = signal1)) + geom_tile() + 
   
   scale_fill_gradientn(colours = c("gray90","black"), values = c(0,1)) + 
   
-  xlab(expression(z[m1]^pi)) + ylab(expression(z[m2]^pi)) +
+  xlab(expression(z[m1]^pi)) + ylab(expression(z[m2]^pi)) + labs(fill = "Lesion Status") +
   
   theme(axis.title.x = element_text(size=18, face="bold"),
         
@@ -85,11 +85,11 @@ print(ggplot(data = LP_data, aes(x = x1, y = x2, fill = signal1)) + geom_tile() 
 
 dev.off()
 
-pdf(paste0("Simulation study",delim,"Figures",delim,"Data_examples",delim,"Intercept ",simulationno,"K500theta",eta,"C",C,"sig_sp",sig_sp,".pdf"),height = 6.75,width = 6)
+pdf(paste0("Simulation study",delim,"Figures",delim,"Data_examples",delim,"Intercept ",simulationno,"K500theta0.75C",C,"sig_sp",sig_sp,".pdf"),height = 6.75,width = 6)
 
 print(ggplot(data = LP_data, aes(x = x1, y = x2)) + geom_tile(aes(fill = Latent_Var)) +
   
-        xlab(expression(z[m1]^pi)) + ylab(expression(z[m2]^pi)) +
+        xlab(expression(z[m1]^pi)) + ylab(expression(z[m2]^pi)) + labs(fill = "Latent_Var") +
   
   theme(axis.title.x = element_text(size=18, face="bold"),
         
@@ -102,13 +102,13 @@ print(ggplot(data = LP_data, aes(x = x1, y = x2)) + geom_tile(aes(fill = Latent_
 dev.off()
 
 
-pdf(paste0("Simulation study",delim,"Figures",delim,"Data_examples",delim,"X value ",simulationno,"K500theta",eta,"C",C,"sig_sp",sig_sp,".pdf"),height = 6.75,width = 5)
+pdf(paste0("Simulation study",delim,"Figures",delim,"Data_examples",delim,"X value ",simulationno,"K500theta0.75C",C,"sig_sp",sig_sp,".pdf"),height = 6.75,width = 5)
 
 print(ggplot(data = LP_data, aes(x = x1, y = x2)) + geom_tile(aes(fill = lesionstatus)) +
         
         scale_fill_gradientn(colours = c("gray90","black"), values = c(0,1)) + 
         
-        xlab(expression(z[m1]^pi)) + ylab(expression(z[m2]^pi))  +
+        xlab(expression(z[m1]^pi)) + ylab(expression(z[m2]^pi)) + labs(fill = "lesionstatus") +
         
         theme(axis.title.x = element_text(size=18, face="bold"),
               
