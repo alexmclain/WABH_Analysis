@@ -17,10 +17,10 @@ library(Matrix)
 library(qvalue)
 
 
-CD20    <- readRDS("Data/Individual_data.rds") # Individual level data
-Big_img <- readRDS("Data/Big_img.rds") # Full image data
+Cov_dat   <- readRDS("Data/Individual_data.rds") # Individual level data
+Big_img   <- readRDS("Data/Big_img.rds") # Full image data
 coord_mat <- readRDS("Data/coord_mat.rds") # 3d Coordinates of image data
-zero_vec <- readRDS("Data/zero_vec.rds") # Locations with zero damage
+zero_vec  <- readRDS("Data/zero_vec.rds") # Locations with zero damage
 
 ## Getting valid rows
 valid_rows <- c(1:length(zero_vec))[as.vector(zero_vec)==0]
@@ -29,6 +29,7 @@ coord_mat <- coord_mat[valid_rows,]
 
 remove(zero_vec)
 
+CD20 <- Cov_dat[complete.cases(Cov_dat),]
 Y_dat <- CD20$Y_dat #Outcome WAB Score
 X_pl <- CD20$Xp #Total lesion size
 X_logit <- log(X_pl/M/(1-X_pl/M)) #Logis transform
