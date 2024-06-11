@@ -48,6 +48,10 @@ loaded via a namespace (and not attached):
 SimDataExampleFigures.R
 An R script which was used to generate figure 2 in the main text, and figures 8 and 9 in the Supplemental Material.
 
+Note: the simulations in the paper used the RandomFields (version 3.3.14) and RandomFieldsUtils (1.2.5) to generate the 
+data. These packages have since been removed from CRAN. For Windows machines, the corresponding versions of RandomFields 
+and RandomFieldsUtils can be installed from source files from the archive at:- <https://cran.r-project.org/web/packages/RandomFields/index.html>- <https://cran.r-project.org/web/packages/RandomFieldsUtils/index.html>For macOS, RandomFields (and all dependencies) can be installed via macport:- <https://ports.macports.org/port/R-RandomFields/>
+
 /subfolder Original Results/
 
 This folder is for the simulation study results in the main text. 01-Simulation.R was used to generate all simulation 
