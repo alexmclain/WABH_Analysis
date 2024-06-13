@@ -1,6 +1,23 @@
 ## Begin by setting the working drive to location to where the
 ## folders "Data Analysis", "Functions", and "Simulation Study" are.
 
+## This version of the simulation requires the the RandomFields package,  
+## which was used generate the MVN data with squared exponential covariance structure 
+## in the paper. The RandomFields has been removed from CRAN since the simulations
+## were originally run. There are alternatives (e.g., the geoR package), but these 
+## packages are much slower (generate the data 100 x slower). For Windows machines, 
+## RandomFields and RandomFieldsUtils source packages are available from:
+##   - https://cran.r-project.org/web/packages/RandomFields/index.html
+##   - https://cran.r-project.org/web/packages/RandomFieldsUtils/index.html
+## However, these can be difficult to install.
+## For macOS, RandomFields (and all dependencies) can be installed via macport:
+##   - https://ports.macports.org/port/R-RandomFields/
+## The macport version of RandomFields generates data that matches what was used in
+## the original simulations.
+
+## The other version of the simulation "01 - Simulation (noRandomFields).R"
+## does not require the RandomFields package.
+
 delim <- "/"
 
 source(paste0("Functions",delim,"WABHProgram.R"))

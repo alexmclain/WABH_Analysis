@@ -103,7 +103,7 @@ Sim_Res <- Sim_Result[Sim_Result$method %in% c("WABH Constant","WABH 0.5 CAMT",
 cols4methods <- c("blue","blueviolet","brown","black","darkgrey","red","darkgreen","darkgoldenrod1","chartreuse","cadetblue1")
 
 
-### Figures in the main document
+
 
 
 Sim_Res1 <- Sim_Res[Sim_Res$Method %in% c("ADAPT", "IHW",
@@ -116,7 +116,7 @@ Sim_Res1$Method[Sim_Res1$Method=="ADAPT"] <- "AdaPT"
 
 
 
-
+### Figure 4 in the main document
 
 grDevices::cairo_pdf(paste0("Simulation study",delim,"Figures",delim,"Power_goodFDR-only.pdf"),width=10,height=7)
 ggplot(Sim_Res1 %>% filter(Method %in% c("AdaPT", "Adaptive BH", "IHW", "WABH", "LAWS")), 
@@ -138,7 +138,7 @@ ggplot(Sim_Res1 %>% filter(Method %in% c("AdaPT", "Adaptive BH", "IHW", "WABH", 
         strip.text.y = element_text(size=12))  #+ theme_bw() 
 dev.off()
 
-
+### Figure 6 in supporting material
 
 grDevices::cairo_pdf(paste0("Simulation study",delim,"Figures",delim,"Power_all-methods.pdf"),width=10,height=7)
 ggplot(Sim_Res1, aes(x=sig_sp, y=Power, color = Method, group = method)) +
@@ -159,6 +159,8 @@ ggplot(Sim_Res1, aes(x=sig_sp, y=Power, color = Method, group = method)) +
         strip.text.y = element_text(size=12))  #+ theme_bw() 
 dev.off()
 
+
+### Figure 3 in the main document
 
 grDevices::cairo_pdf(paste0("Simulation study",delim,"Figures",delim,"FDR_all-methods.pdf"),width=10,height=7)
 ggplot(Sim_Res1, aes(x=sig_sp, y=FDR, color = Method, group = method)) +
@@ -181,6 +183,7 @@ ggplot(Sim_Res1, aes(x=sig_sp, y=FDR, color = Method, group = method)) +
 dev.off()
 
 
+### Figure 7 in supporting material
 
 grDevices::cairo_pdf(paste0("Simulation study",delim,"Figures",delim,"FDR-w-SE_all-methods.pdf"),width=10,height=7)
 pos_wid <- 0.5
@@ -212,7 +215,7 @@ ggplot(Sim_Res1 , aes(x=sig_sp, y=FDR, color = Method, group = method)) +
 dev.off()
 
 
-### Figures in supporting material
+
 
 cols4methods <- c("blue","blueviolet","brown","black","darkgrey","red","darkgreen","darkgoldenrod1","chartreuse")
 
@@ -225,6 +228,7 @@ Sim_Res2 <- Sim_Result[Sim_Result$method %in% c("Ten Rule","WABH 0.9 ADAPT",
 
 Sim_Res2$Method[Sim_Res2$Method=="WABH 0.9 ADAPT"] <- "WABH 0.9 AdaPT"
 
+### Figure 5 in supporting material
 
 grDevices::cairo_pdf(paste0("Simulation study",delim,"Figures",delim,"SupportInfoSimulationPlot5.pdf"),width=10,height=7)
 ggplot(Sim_Res2, aes(x=sig_sp, y=Power, color = Method, group = method)) +
@@ -245,6 +249,8 @@ ggplot(Sim_Res2, aes(x=sig_sp, y=Power, color = Method, group = method)) +
         strip.text.y = element_text(size=12))  #+ theme_bw() 
 dev.off()
 
+
+### Figure 4 in supporting material
 
 grDevices::cairo_pdf(paste0("Simulation study",delim,"Figures",delim,"SupportInfoSimulationPlot4.pdf"),width=10,height=7)
 ggplot(Sim_Res2, aes(x=sig_sp, y=FDR, color = Method, group = method)) +

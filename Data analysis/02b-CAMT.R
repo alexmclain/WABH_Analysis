@@ -143,9 +143,13 @@ weights_10per <- (M*ind_10per)/sum(ind_10per)
 
 
 #Number of discoveries for 10% rule, BH and ABH method
-(TolRej_Ten <- sum(MTR_testcamtpm_etatau0.9$BH_res$Ten))
-(TolRej_BH <- sum(MTR_testcamtpm_etatau0.9$BH_res$BH))
-(TolRej_ABH <- sum(MTR_testcamtpm_etatau0.9$BH_res$ABH))
+Result_Ten <- MTR_testcamtpm_etatau0.9$BH_res$Ten
+Result_BH <- MTR_testcamtpm_etatau0.9$BH_res$BH
+Result_ABH <- MTR_testcamtpm_etatau0.9$BH_res$ABH
+
+TolRej_Ten <- sum(Result_Ten)
+TolRej_BH <- sum(Result_BH)
+TolRej_ABH <- sum(Result_ABH)
 
 
 

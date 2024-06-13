@@ -1,6 +1,23 @@
 ## Begin by setting the working drive to location to where the
 ## folders "Data Analysis", "Functions", and "Simulation Study" are.
 
+## This version of the simulation requires the the RandomFields package,  
+## which was used generate the MVN data with squared exponential covariance structure 
+## in the paper. The RandomFields has been removed from CRAN since the simulations
+## were originally run. There are alternatives (e.g., the geoR package), but these 
+## packages are much slower (generate the data 100 x slower). For Windows machines, 
+## RandomFields and RandomFieldsUtils source packages are available from:
+##   - https://cran.r-project.org/web/packages/RandomFields/index.html
+##   - https://cran.r-project.org/web/packages/RandomFieldsUtils/index.html
+## However, these can be difficult to install.
+## For macOS, RandomFields (and all dependencies) can be installed via macport:
+##   - https://ports.macports.org/port/R-RandomFields/
+## The macport version of RandomFields generates data that matches what was used in
+## the original simulations.
+
+## The other version of the simulation "01 - Simulation (noRandomFields).R"
+## does not require the RandomFields package.
+
 delim <- "/"
 
 source(paste0("Functions",delim,"WABHProgram.R"))
@@ -58,7 +75,7 @@ for(args in 1:54){
     ## Generating the latent data (intercepts) alpha0m star in the paper
     data <- RFsimulate(model = RMstable(alpha = 2, scale = lat_sp), x=x, y=x, grid=TRUE,n=1)
     LP_data <- expand.grid(x1=x,x2=x)
-    LP_data$Latent_Var <- C*(array(data)-mean(array(data)))/sd(array(data)) #standard deviation is C value
+    LP_data$Latent_Var <- beta0+C*(array(data)-mean(array(data)))/sd(array(data)) #standard deviation is C value
     LP_data$signal <- signal_data+1e-10
     signal<- seq(1,M,1)[signal_data==1]
     
@@ -74,7 +91,7 @@ for(args in 1:54){
     Y_dat <- (Y_dat - mean(Y_dat))/sd(Y_dat)
     eta_samp <- runif(M,0,2*eta) # Alpha coefficients mean is eta
     for(i in 1:M){
-      X <- beta0+LP_data$Latent_Var[i]+RE_eff+eta_samp[i]*I(i %in% signal)*Y_dat + LP_data$mis_par[i]*mis_cov
+      X <- LP_data$Latent_Var[i]+RE_eff+eta_samp[i]*I(i %in% signal)*Y_dat + LP_data$mis_par[i]*mis_cov
       p_X <- exp(X)/(1+exp(X))
       b_X <- rbinom(N,1,p_X)
       BR_dat[,i] <- b_X
