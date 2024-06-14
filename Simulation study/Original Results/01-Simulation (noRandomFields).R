@@ -48,6 +48,8 @@ eta <- as.numeric(args_list[2])    #theta value in paper draft
 C <- as.numeric(args_list[3]) #Controls the heterogeneity 0.5, 1.5, 3
 sig_sp <- as.numeric(args_list[4]) #Spatial clustering of signals
 lat_sp <- 50 #Spatial clustering of data
+start <- as.numeric(args_list[5])
+
 
 ## Reading in the spatial RandomFields data
 signal_data_mat <- readRDS(paste0("Simulation study",delim,"RandomFieldsData",delim,"signal_data K=",K," eta=",eta," C=",C," sig_sp=",sig_sp," start=",start,".rds"))
@@ -59,8 +61,6 @@ Weight_res2<- matrix(0,B,9)
 ihw_mat <- Regular_res <- AD_res <- TenRule_res <- matrix(0,B,3)
 adapt_mat <- swfdr_mat <- camt_mat <- matrix(0,B,3)
 Laws_res <- matrix(-999,B,3)
-RFoptions(spConform=FALSE)
-start <- as.numeric(args_list[5])
 pi_hat_mean <- NULL
 p3_mean <- NULL
 p_mean <- NULL

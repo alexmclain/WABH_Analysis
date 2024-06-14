@@ -19,7 +19,6 @@ delim <- "/"
 source(paste0("Functions",delim,"WABHProgram.R"))
 source(paste0("Functions",delim,"swfdr.R"))
 library(adaptMT)
-library(RandomFields)
 library(ggplot2)
 library(cp4p)
 library(dplyr)
@@ -49,6 +48,7 @@ for(args in 1:54){
   sig_sp <- 10 #Spatial clustering of signals
   mis_sp <- as.numeric(args_list[4])*4 #Spatial clustering of misspecified covariate
   lat_sp <- 50 #Spatial clustering of data
+  start <- as.numeric(args_list[5])
   
   ## Reading in the spatial RandomFields data
   signal_data_mat <- readRDS(paste0("Simulation study",delim,"RandomFieldsData",delim,"signal_data K=",K," eta=",eta," C=",C," sig_sp=",sig_sp," start=",start,".rds"))
@@ -60,8 +60,6 @@ for(args in 1:54){
   Weight_res2<- matrix(0,B,9)
   ihw_mat <- Regular_res <- AD_res <- TenRule_res <- matrix(0,B,3)
   adapt_mat <- swfdr_mat <- camt_mat <- matrix(0,B,3)
-  RFoptions(spConform=FALSE)
-  start <- as.numeric(args_list[5])
   pi_hat_mean <- NULL
   p3_mean <- NULL
   p_mean <- NULL
