@@ -48,7 +48,7 @@ loaded via a namespace (and not attached):
 
 [31] colorspace_2.0-2  utf8_1.2.2        stringi_1.7.4     munsell_0.5.0     R.oo_1.24.0 
 
-
+The CAMT package can be installed via GitHub using: devtools::install_github("jchen1981/CAMT") 
 
 /folder Data analysis/
 
